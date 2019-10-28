@@ -26,6 +26,8 @@ data class Depts(
 
     var IsMineDept: Int,
 
+    var Name: String,
+
     var IsActive: Int
 )
 

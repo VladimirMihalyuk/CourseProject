@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 
 
 @Database(entities = [User::class, Depts::class, Income::class, Costs::class, IncomeType::class, CostType::class ],
-    version = 1, exportSchema = true)
+    version = 2, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDatabase  : RoomDatabase() {
     abstract val databaseDao: DatabaseDAO
