@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1031051231822",
+    "firebase_url": "https://courseproject-a499d.firebaseio.com",
+    "project_id": "courseproject-a499d",
+    "storage_bucket": "courseproject-a499d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031051231822:android:9eb163555edf1ba4de391f",
+        "android_client_info": {
+          "package_name": "com.example.courseproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031051231822-qhl0tpqq0i5hb8ovgb52oaq7kp0ob6lq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.courseproject",
+            "certificate_hash": "52a24d73c14a3f6de4f2184788a3f96d486c13aa"
+          }
+        },
+        {
+          "client_id": "1031051231822-v7bieqqv4h0at8shtb9mic3qc5k5l8l1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDffIV6JccaPRNPAeMO4Ol50ILeYc4lT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031051231822-v7bieqqv4h0at8shtb9mic3qc5k5l8l1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
