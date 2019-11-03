@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_loginFragment_to_logUpFragment"
             app:destination="@id/logUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_accountigFragment"
+            app:destination="@id/accountigFragment" />
     </fragment>
     <fragment
         android:id="@+id/logUpFragment"
-        android:name="com.example.courseproject.LogUpFragment"
+        android:name="com.example.courseproject.log_up.LogUpFragment"
         android:label="fragment_log_up"
-        tools:layout="@layout/fragment_log_up" />
+        tools:layout="@layout/fragment_log_up" >
+        <action
+            android:id="@+id/action_logUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountigFragment"
+        android:name="com.example.courseproject.AccountigFragment"
+        android:label="fragment_accountig"
+        tools:layout="@layout/fragment_accountig" />
 </navigation>

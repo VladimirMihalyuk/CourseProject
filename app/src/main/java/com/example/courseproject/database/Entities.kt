@@ -7,8 +7,8 @@ import java.util.*
 
 @Entity
 data class User(
-    @PrimaryKey(autoGenerate = true)
-    var Id: Int = 0,
+    @PrimaryKey
+    var Id: String = "",
 
     var email: String,
 
@@ -17,10 +17,10 @@ data class User(
 
 @Entity
 data class Depts(
-    @PrimaryKey(autoGenerate = true)
-    var Id: Int = 0,
+    @PrimaryKey
+    var Id: String = "",
 
-    var UserId: Int,
+    var UserId: String,
 
     var Money: Float,
 
@@ -33,10 +33,10 @@ data class Depts(
 
 @Entity
 data class Income(
-    @PrimaryKey(autoGenerate = true)
-    var Id: Int = 0,
+    @PrimaryKey
+    var Id: String = "",
 
-    var UserId: Int,
+    var UserId: String,
 
     var AmountOfMoney: Float,
 
@@ -47,10 +47,10 @@ data class Income(
 
 @Entity
 data class Costs(
-    @PrimaryKey(autoGenerate = true)
-    var Id: Int = 0,
+    @PrimaryKey
+    var Id: String = "",
 
-    var UserId: Int,
+    var UserId: String,
 
     var AmountOfMoney: Float,
 
