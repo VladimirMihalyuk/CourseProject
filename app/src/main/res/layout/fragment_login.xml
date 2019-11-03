@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.courseproject.log_in.LogInViewModel" />
     </data>
 
     <FrameLayout
@@ -37,12 +39,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/email"
+                        android:text="@={viewModel.email}"
+                        app:emailFocus="@{viewModel}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Электронная почта" />
@@ -51,30 +56,33 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="24dp"
+                    android:src="@drawable/logocp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title"
-                    tools:src="@tools:sample/avatars" />
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passwordLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    app:errorEnabled="true"
+                    app:endIconMode="password_toggle"
                     app:layout_constraintEnd_toEndOf="@+id/emailLayout"
                     app:layout_constraintStart_toStartOf="@+id/emailLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/emailLayout"
-                    app:endIconMode="password_toggle">
+                    app:layout_constraintTop_toBottomOf="@+id/emailLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Пароль"
-                        android:inputType="textPassword"/>
+                        app:passwordFocus="@{viewModel}"
+                        android:text="@={viewModel.password}"
+                        android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -82,19 +90,22 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:onClick="@{() -> viewModel.signIn()}"
                     android:text="Войти"
-                    app:layout_constraintEnd_toEndOf="@+id/passwordLayout"
-                    app:layout_constraintStart_toStartOf="@+id/passwordLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/log_up"
+                    app:layout_constraintStart_toStartOf="@+id/log_up"
                     app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
 
                 <Button
                     android:id="@+id/log_up"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:onClick="@{() -> viewModel.moveToRegistrationFragment()}"
                     android:text="Создать аккаунт"
-                    app:layout_constraintEnd_toEndOf="@+id/log_in"
-                    app:layout_constraintStart_toStartOf="@+id/log_in"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/log_in" />
 
 
