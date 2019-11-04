@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/accountigFragment"
+        android:title="Учёт доходов и  расходов" />
+    <item
+        android:id="@+id/deptsFragment"
+        android:title="Долги" />
+    <item
+        android:id="@+id/historyFragment"
+        android:title="Выписка" />
+    <item
+        android:id="@+id/graphsFragment"
+        android:icon="@drawable/graphics"
+        android:title="График расходов" />
+    <item
+        android:id="@+id/pireChartsFragment"
+        android:icon="@drawable/pie_chart"
+        android:title="Циклограмма расчётов" />
+</menu>

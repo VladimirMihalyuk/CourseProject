@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/accountigFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -28,7 +28,27 @@
     </fragment>
     <fragment
         android:id="@+id/accountigFragment"
-        android:name="com.example.courseproject.AccountigFragment"
+        android:name="com.example.courseproject.accounting.AccountigFragment"
         android:label="fragment_accountig"
         tools:layout="@layout/fragment_accountig" />
+    <fragment
+        android:id="@+id/deptsFragment"
+        android:name="com.example.courseproject.depts.DeptsFragment"
+        android:label="fragment_depts"
+        tools:layout="@layout/fragment_depts" />
+    <fragment
+        android:id="@+id/graphsFragment"
+        android:name="com.example.courseproject.graphs.GraphsFragment"
+        android:label="fragment_graphs"
+        tools:layout="@layout/fragment_graphs" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.courseproject.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/pireChartsFragment"
+        android:name="com.example.courseproject.pie_charts.PireChartsFragment"
+        android:label="fragment_pire_charts"
+        tools:layout="@layout/fragment_pire_charts" />
 </navigation>
