@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.courseproject.App
 import com.example.courseproject.R
@@ -33,6 +34,7 @@ class AccountigFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_accountig, container, false)
         view.button2.setOnClickListener{
             findNavController().navigate(AccountigFragmentDirections.actionAccountigFragmentToLogInFlowActivity())
+
         }
 
         return view
