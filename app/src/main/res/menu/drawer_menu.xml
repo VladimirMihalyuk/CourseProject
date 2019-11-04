@@ -3,12 +3,15 @@
 
     <item
         android:id="@+id/accountigFragment"
+        android:icon="@drawable/accountinting"
         android:title="Учёт доходов и  расходов" />
     <item
         android:id="@+id/deptsFragment"
+        android:icon="@drawable/depts"
         android:title="Долги" />
     <item
         android:id="@+id/historyFragment"
+        android:icon="@drawable/history"
         android:title="Выписка" />
     <item
         android:id="@+id/graphsFragment"
