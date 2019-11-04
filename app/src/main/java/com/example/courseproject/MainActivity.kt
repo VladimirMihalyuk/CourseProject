@@ -31,20 +31,20 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = binding.drawerLayout
 
 
-        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->
-            if (nd.id.equals(R.id.loginFragment) || nd.id.equals(R.id.logUpFragment)) {
-                Log.d("WTF", "LOCK")
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                getSupportActionBar()?.setDisplayShowHomeEnabled(true)
-
-            } else {
-                Log.d("WTF", "UNLOCK")
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-                getSupportActionBar()?.setDisplayShowHomeEnabled(true)
-
-            }
-
-        }
+//        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->
+//            if (nd.id.equals(R.id.loginFragment) || nd.id.equals(R.id.logUpFragment)) {
+//                Log.d("WTF", "LOCK")
+//                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+//                getSupportActionBar()?.setDisplayShowHomeEnabled(true)
+//
+//            } else {
+//                Log.d("WTF", "UNLOCK")
+//                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+//                getSupportActionBar()?.setDisplayShowHomeEnabled(true)
+//
+//            }
+//
+//        }
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
 

@@ -24,7 +24,6 @@ import java.lang.Exception
  */
 class LoginFragment : Fragment() {
 
-    val firebaseHelper = FirebaseHelper()
 
 
     override fun onCreateView(
@@ -58,7 +57,7 @@ class LoginFragment : Fragment() {
 
         viewModel.moveToRegistrationFragmentEvent.observe(this, Observer {event ->
             if(event){
-                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToLogUpFragment())
+                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToLogUpFragment2())
                 viewModel.resetEvent()
             }
         })
@@ -75,7 +74,7 @@ class LoginFragment : Fragment() {
                 mySnackbar.show()
             } else {
                 try{
-                    this.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToAccountigFragment())
+                    this.findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToMainActivity())
                 } catch (e: Exception){
                     Log.e("WTF", "${e.message}")
                 }

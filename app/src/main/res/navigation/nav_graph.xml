@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/accountigFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.courseproject.log_in.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_logUpFragment"
-            app:destination="@id/logUpFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_accountigFragment"
-            app:destination="@id/accountigFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/logUpFragment"
-        android:name="com.example.courseproject.log_up.LogUpFragment"
-        android:label="fragment_log_up"
-        tools:layout="@layout/fragment_log_up" >
-        <action
-            android:id="@+id/action_logUpFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/accountigFragment"
         android:name="com.example.courseproject.accounting.AccountigFragment"
         android:label="fragment_accountig"
-        tools:layout="@layout/fragment_accountig" />
+        tools:layout="@layout/fragment_accountig" >
+        <action
+            android:id="@+id/action_accountigFragment_to_logInFlowActivity"
+            app:destination="@id/logInFlowActivity" />
+    </fragment>
     <fragment
         android:id="@+id/deptsFragment"
         android:name="com.example.courseproject.depts.DeptsFragment"
@@ -51,4 +35,9 @@
         android:name="com.example.courseproject.pie_charts.PireChartsFragment"
         android:label="fragment_pire_charts"
         tools:layout="@layout/fragment_pire_charts" />
+    <activity
+        android:id="@+id/logInFlowActivity"
+        android:name="com.example.courseproject.LogInFlowActivity"
+        android:label="activity_log_in_flow"
+        tools:layout="@layout/activity_log_in_flow" />
 </navigation>
