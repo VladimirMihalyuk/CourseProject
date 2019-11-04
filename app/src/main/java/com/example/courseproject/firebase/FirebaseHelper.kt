@@ -1,15 +1,10 @@
 package com.example.courseproject.firebase
 
 
-import android.content.Context
-import android.content.Intent
+
 import android.util.Log
-import androidx.core.app.ActivityCompat.startActivityForResult
-import com.example.courseproject.R
+import com.example.courseproject.App
 import com.example.courseproject.database.User
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -23,8 +18,11 @@ class FirebaseHelper {
 
     fun signIn(email: String, password: String, completionListener: (isSuccessful: Boolean) -> Unit){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-            getResult(task.isSuccessful)
             completionListener(task.isSuccessful)
+            if(task.isSuccessful){
+                Log.d("WTF", "${task.result?.user?.uid}")
+                App.prefs?.idClient = task.result?.user?.uid
+            }
         }
     }
 
@@ -41,12 +39,9 @@ class FirebaseHelper {
         }
     }
 
-    fun getResult(result: Boolean){
-        Log.d("WTF", "$result")
-    }
-
 
     fun signOt(){
+        App.prefs?.idClient = null
         mAuth.signOut()
     }
 

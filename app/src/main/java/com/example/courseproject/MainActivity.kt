@@ -3,12 +3,16 @@ package com.example.courseproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.example.courseproject.accounting.AccountigFragmentDirections
 import com.example.courseproject.database.AppDatabase
 import com.example.courseproject.database.Costs
 import com.example.courseproject.databinding.ActivityMainBinding
@@ -22,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
 
         @Suppress("UNUSED_VARIABLE")
 
@@ -31,29 +34,8 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = binding.drawerLayout
 
 
-//        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->
-//            if (nd.id.equals(R.id.loginFragment) || nd.id.equals(R.id.logUpFragment)) {
-//                Log.d("WTF", "LOCK")
-//                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-//                getSupportActionBar()?.setDisplayShowHomeEnabled(true)
-//
-//            } else {
-//                Log.d("WTF", "UNLOCK")
-//                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-//                getSupportActionBar()?.setDisplayShowHomeEnabled(true)
-//
-//            }
-//
-//        }
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
-
-
-
-
-
-
-
 
 
 //        var database = AppDatabase.getInstance(this.application).databaseDao
@@ -69,5 +51,22 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.nav_host_fragment)
         return NavigationUI.navigateUp(navController, drawerLayout)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.log_out_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.log_out -> {
+                App.prefs?.idClient = null
+                findNavController(R.id.nav_host_fragment).navigate(R.id.action_accountigFragment_to_logInFlowActivity)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
