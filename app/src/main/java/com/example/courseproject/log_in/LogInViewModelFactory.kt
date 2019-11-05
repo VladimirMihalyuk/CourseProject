@@ -2,7 +2,9 @@ package com.example.courseproject.log_in
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.courseproject.debts.DebtViewModel
 import com.example.courseproject.repository.Repository
+
 
 class LogInViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")

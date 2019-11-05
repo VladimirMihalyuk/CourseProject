@@ -8,10 +8,11 @@ import androidx.room.TypeConverters
 
 
 @Database(entities = [User::class, Depts::class, Income::class, Costs::class, IncomeType::class, CostType::class ],
-    version = 3, exportSchema = true)
+    version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase  : RoomDatabase() {
     abstract val databaseDao: DatabaseDAO
+
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null

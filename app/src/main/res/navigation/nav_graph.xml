@@ -17,9 +17,13 @@
     </fragment>
     <fragment
         android:id="@+id/deptsFragment"
-        android:name="com.example.courseproject.depts.DeptsFragment"
+        android:name="com.example.courseproject.debts.DebtsFragment"
         android:label="fragment_depts"
-        tools:layout="@layout/fragment_depts" />
+        tools:layout="@layout/fragment_debts" >
+        <action
+            android:id="@+id/action_deptsFragment_to_addDeptDetailsFragment"
+            app:destination="@id/addDeptDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/graphsFragment"
         android:name="com.example.courseproject.graphs.GraphsFragment"
@@ -40,4 +44,13 @@
         android:name="com.example.courseproject.LogInFlowActivity"
         android:label="activity_log_in_flow"
         tools:layout="@layout/activity_log_in_flow" />
+    <fragment
+        android:id="@+id/addDeptDetailsFragment"
+        android:name="com.example.courseproject.debts.AddDebtDetailsFragment"
+        android:label="fragment_add_dept_details"
+        tools:layout="@layout/fragment_add_debt_details" >
+        <action
+            android:id="@+id/action_addDeptDetailsFragment_to_deptsFragment"
+            app:destination="@id/deptsFragment" />
+    </fragment>
 </navigation>

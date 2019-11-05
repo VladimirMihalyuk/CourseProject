@@ -65,4 +65,7 @@ dependencies {
     implementation 'com.github.VladimirWrites:Lemniscate:2.0.2'
     implementation "androidx.viewpager2:viewpager2:1.0.0-rc01"
 
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
 }

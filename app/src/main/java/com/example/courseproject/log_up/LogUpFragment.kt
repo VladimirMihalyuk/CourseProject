@@ -48,16 +48,16 @@ class LogUpFragment : Fragment() {
             }
         })
 
-        viewModel.isPasswordValid.observe(this , Observer { flag ->
-            if(flag){
+        viewModel.isPasswordValid.observe(this , Observer { correct ->
+            if(correct){
                 binding.passwordlLayout.isErrorEnabled = false
             } else {
                 binding.passwordlLayout.error = "Пароль должен быть не меньше 8 символов"
             }
         })
 
-        viewModel.isConfirmPasswordValid.observe(this, Observer {flag ->
-            if(flag){
+        viewModel.isConfirmPasswordValid.observe(this, Observer {correct ->
+            if(correct){
                 binding.confirmPasswordlLayout.isErrorEnabled = false
             } else {
                 binding.confirmPasswordlLayout.error = "Введённые пароли не совпадают"

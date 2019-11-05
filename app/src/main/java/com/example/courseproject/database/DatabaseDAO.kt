@@ -8,4 +8,7 @@ import androidx.room.OnConflictStrategy
 interface DatabaseDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg cost: Costs)
+
+    @Insert
+    fun insertDept(cost: Depts)
 }

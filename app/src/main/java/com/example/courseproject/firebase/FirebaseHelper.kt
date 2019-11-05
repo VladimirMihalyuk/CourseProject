@@ -4,9 +4,13 @@ package com.example.courseproject.firebase
 
 import android.util.Log
 import com.example.courseproject.App
+import com.example.courseproject.database.Depts
 import com.example.courseproject.database.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class FirebaseHelper {
@@ -58,6 +62,13 @@ class FirebaseHelper {
             Log.d("FIRE", "$uid")
         }
 
+    }
+
+    public fun addDebt(userId: String, money: Float, isMineDept: Int, name: String, isActive: Int):Depts{
+        val id = fireDatabase.child("debts").child(userId).push().key ?: ""
+        val debt  = Depts(id, userId, money, isMineDept, name, isActive)
+        fireDatabase.child("debts").child(userId).child(id).setValue(debt)
+        return debt
     }
 
 
