@@ -1,6 +1,7 @@
 package com.example.courseproject.debts
 
 import android.widget.EditText
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.courseproject.log_in.LogInViewModel
 
@@ -20,4 +21,9 @@ fun EditText.setMoneyFocusListener(item: DebtViewModel) {
             item.checkMoney()
         }
     }
+}
+
+@BindingAdapter("moneyText")
+fun TextView.setMoneyTxt(money: Float) {
+    this.text = money.toString() + "BYN"
 }

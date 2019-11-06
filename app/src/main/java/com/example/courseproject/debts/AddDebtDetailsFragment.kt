@@ -32,7 +32,9 @@ class AddDebtDetailsFragment : Fragment() {
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
         val viewModelFactory = DebtViewModelFactory(repository)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory)[DebtViewModel::class.java]
+        val viewModel = activity?.run {
+            ViewModelProviders.of(this, viewModelFactory)[DebtViewModel::class.java]
+        }?: throw Exception("Invalid Activity")
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 

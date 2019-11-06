@@ -1,5 +1,6 @@
 package com.example.courseproject.debts
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,9 @@ import com.example.courseproject.repository.Repository
 
 
 class DebtViewModel(val repository: Repository) : ViewModel() {
+    val allMineDebts = repository.getAllMineDebts(App.prefs?.idClient ?: "")
+    val allNotMineDebts = repository.getAllNotMineDebts(App.prefs?.idClient ?: "")
+
     val name = MutableLiveData<String>()
     val money = MutableLiveData<String>()
 
@@ -19,11 +23,17 @@ class DebtViewModel(val repository: Repository) : ViewModel() {
     val moneyError: LiveData<Boolean>
         get() = _moneyError
 
+    init{
+        Log.d("WTF", "INIT")
+        repository.loadAllDebts(App.prefs?.idClient ?: "" )
+    }
+
+
     fun checkName(){
         _nameError.value = name.value?.length ?: 0 != 0
     }
 
-    var moneyValue: Float = 0F
+    private var moneyValue: Float = 0F
     fun checkMoney(){
         if( money.value?.length ?: 0 != 0){
             try{
@@ -71,9 +81,12 @@ class DebtViewModel(val repository: Repository) : ViewModel() {
     }
 
     companion object{
-        private var isMine = false
+        private var isMine = true
         fun setIsMine(isMine: Boolean){
             this.isMine = isMine
         }
+
+        fun getIsMine():Boolean = isMine
+
     }
 }

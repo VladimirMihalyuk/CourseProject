@@ -29,7 +29,9 @@ data class Depts(
     var Name: String,
 
     var IsActive: Int
-)
+){
+    constructor():this("", "", 0F, 1, "", 1)
+}
 
 @Entity
 data class Income(
