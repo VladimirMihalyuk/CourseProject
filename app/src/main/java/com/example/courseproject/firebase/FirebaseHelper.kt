@@ -4,16 +4,13 @@ package com.example.courseproject.firebase
 
 import android.util.Log
 import com.example.courseproject.App
-import com.example.courseproject.database.Depts
+import com.example.courseproject.database.Debts
 import com.example.courseproject.database.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class FirebaseHelper {
@@ -67,18 +64,18 @@ class FirebaseHelper {
 
     }
 
-    fun addDebt(userId: String, money: Float, isMineDept: Int, name: String, isActive: Int):Depts{
+    fun addDebt(userId: String, money: Float, isMineDept: Int, name: String, isActive: Int):Debts{
         val id = fireDatabase.child("debts").child(userId).push().key ?: ""
-        val debt  = Depts(id, userId, money, isMineDept, name, isActive)
+        val debt  = Debts(id, userId, money, isMineDept, name, isActive)
         fireDatabase.child("debts").child(userId).child(id).setValue(debt)
         return debt
     }
 
-    fun loadAllDebts(userId: String, callback: (list: MutableList<Depts>) -> Unit){
-        val menu: MutableList<Depts> = mutableListOf()
+    fun loadAllDebts(userId: String, callback: (list: MutableList<Debts>) -> Unit){
+        val menu: MutableList<Debts> = mutableListOf()
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot.children.mapNotNullTo(menu) { it.getValue<Depts>(Depts::class.java) }
+                dataSnapshot.children.mapNotNullTo(menu) { it.getValue<Debts>(Debts::class.java) }
                 callback(menu)
             }
 
@@ -90,7 +87,7 @@ class FirebaseHelper {
             addListenerForSingleValueEvent(postListener)
     }
 
-    fun updateDebt(debt: Depts){
+    fun updateDebt(debt: Debts){
         fireDatabase.child("debts").child(debt.UserId).child(debt.Id).setValue(debt)
     }
 

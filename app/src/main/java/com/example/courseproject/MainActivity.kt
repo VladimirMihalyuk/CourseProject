@@ -38,13 +38,13 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navView, navController)
 
 
-//        var database = AppDatabase.getInstance(this.application).databaseDao
-//
-//        var job = GlobalScope.launch {
-//            database.insertAll(Costs("", "", 1F,Calendar.getInstance().getTime(), 1))
-//        }
-//
-//        Thread.sleep(200)
+        var database = AppDatabase.getInstance(this.application).databaseDao
+
+        var job = GlobalScope.launch {
+            database.insertAll(Costs("", "","Loh", 1F,Calendar.getInstance().getTime(), 1))
+        }
+
+        Thread.sleep(200)
 
     }
 

@@ -9,18 +9,18 @@ interface DatabaseDAO {
     fun insertAll(vararg cost: Costs)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDebt(cost: Depts)
+    fun insertDebt(cost: Debts)
 
     //Мои долги
-    @Query("SELECT * FROM Depts WHERE IsMineDept == 1 and UserId = :userId and IsActive = 1")
-    fun getAllMineDebts(userId: String):LiveData<List<Depts>>
+    @Query("SELECT * FROM Debts WHERE IsMineDept == 1 and UserId = :userId and IsActive = 1")
+    fun getAllMineDebts(userId: String):LiveData<List<Debts>>
 
     //Должен я
-    @Query("SELECT * FROM Depts WHERE IsMineDept == 0 and UserId = :userId and IsActive = 1")
-    fun getAllNotMineDebts(userId: String):LiveData<List<Depts>>
+    @Query("SELECT * FROM Debts WHERE IsMineDept == 0 and UserId = :userId and IsActive = 1")
+    fun getAllNotMineDebts(userId: String):LiveData<List<Debts>>
 
     @Update
-    fun updateDebt(debt:Depts)
+    fun updateDebt(debt:Debts)
 
 
 }

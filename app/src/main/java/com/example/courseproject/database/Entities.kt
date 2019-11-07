@@ -16,7 +16,7 @@ data class User(
 )
 
 @Entity
-data class Depts(
+data class Debts(
     @PrimaryKey
     var Id: String = "",
 
@@ -38,6 +38,8 @@ data class Income(
     @PrimaryKey
     var Id: String = "",
 
+    var Description: String,
+
     var UserId: String,
 
     var AmountOfMoney: Float,
@@ -51,6 +53,8 @@ data class Income(
 data class Costs(
     @PrimaryKey
     var Id: String = "",
+
+    var Description: String,
 
     var UserId: String,
 

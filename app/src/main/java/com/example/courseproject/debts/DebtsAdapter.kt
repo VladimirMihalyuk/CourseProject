@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.courseproject.database.Depts
+import com.example.courseproject.database.Debts
 import com.example.courseproject.databinding.DebtsListItemBinding
 
 class DebtsAdapter(val clickListener: DebtClickListener):
-    ListAdapter<Depts, DebtsAdapter.ViewHolder>(DiffCallback()) {
+    ListAdapter<Debts, DebtsAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -25,7 +25,7 @@ class DebtsAdapter(val clickListener: DebtClickListener):
     class ViewHolder private constructor(val binding: DebtsListItemBinding)
         :RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Depts, clickListener: DebtClickListener){
+        fun bind(item: Debts, clickListener: DebtClickListener){
             binding.debt = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -41,16 +41,16 @@ class DebtsAdapter(val clickListener: DebtClickListener):
     }
 }
 
-class DebtClickListener(val clickListener: (debt: Depts) -> Unit){
-    fun onClick(debt: Depts) = clickListener(debt)
+class DebtClickListener(val clickListener: (debt: Debts) -> Unit){
+    fun onClick(debt: Debts) = clickListener(debt)
 }
 
-private class DiffCallback: DiffUtil.ItemCallback<Depts>(){
-    override fun areItemsTheSame(oldItem: Depts, newItem: Depts): Boolean {
+private class DiffCallback: DiffUtil.ItemCallback<Debts>(){
+    override fun areItemsTheSame(oldItem: Debts, newItem: Debts): Boolean {
         return oldItem.Id == newItem.Id
     }
 
-    override fun areContentsTheSame(oldItem: Depts, newItem: Depts): Boolean {
+    override fun areContentsTheSame(oldItem: Debts, newItem: Debts): Boolean {
         return oldItem == newItem
     }
 }

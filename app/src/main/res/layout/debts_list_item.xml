@@ -6,7 +6,7 @@
     <data>
         <variable
             name="debt"
-            type="com.example.courseproject.database.Depts" />
+            type="com.example.courseproject.database.Debts" />
         <variable
             name="clickListener"
             type="com.example.courseproject.debts.DebtClickListener" />

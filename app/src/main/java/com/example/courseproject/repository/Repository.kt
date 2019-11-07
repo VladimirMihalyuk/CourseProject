@@ -1,11 +1,10 @@
 package com.example.courseproject.repository
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.courseproject.database.AppDatabase
 import com.example.courseproject.database.DatabaseDAO
-import com.example.courseproject.database.Depts
+import com.example.courseproject.database.Debts
 import com.example.courseproject.firebase.FirebaseHelper
 import kotlinx.coroutines.*
 
@@ -47,11 +46,11 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
         }
     }
 
-    fun getAllMineDebts(userId: String): LiveData<List<Depts>>{
+    fun getAllMineDebts(userId: String): LiveData<List<Debts>>{
         return database.getAllMineDebts(userId)
     }
 
-    fun getAllNotMineDebts(userId: String):LiveData<List<Depts>>{
+    fun getAllNotMineDebts(userId: String):LiveData<List<Debts>>{
         return database.getAllNotMineDebts(userId)
     }
 
@@ -61,7 +60,7 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
         }
     }
 
-    private fun loadDebtCallback(debts: MutableList<Depts>){
+    private fun loadDebtCallback(debts: MutableList<Debts>){
         ioScope.launch {
             for(debt in debts){
                 database.insertDebt(debt)
@@ -69,13 +68,13 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
         }
     }
 
-    fun updateDebt(debt: Depts){
+    fun updateDebt(debt: Debts){
         debt.IsActive = 0
         firebaseHelper.updateDebt(debt)
         updateDebtDB(debt)
     }
 
-    private fun updateDebtDB(debt: Depts){
+    private fun updateDebtDB(debt: Debts){
         ioScope.launch {
             database.updateDebt(debt)
         }
