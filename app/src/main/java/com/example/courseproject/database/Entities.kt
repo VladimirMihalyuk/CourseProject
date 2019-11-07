@@ -1,5 +1,6 @@
 package com.example.courseproject.database
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
@@ -65,6 +66,8 @@ data class Costs(
     var IdOfCostType: Int
 )
 
+
+
 @Entity
 data class IncomeType(
     @PrimaryKey(autoGenerate = true)
@@ -98,3 +101,69 @@ class Converters {
     }
 }
 
+data class CostsRequestItem(
+    val IdOfCoost: Int,
+
+    val Type: String,
+
+    val Icon: String,
+
+    val Id: String?,
+
+    val Description: String?,
+
+    val UserId: String?,
+
+    val AmountOfMoney: Float?,
+
+    val DateOfCost: Date?,
+
+    val IdOfCostType: Int?
+)
+
+data class AccountingItem(
+    val AccountingType: Int, //0 - costs 1-income
+
+    var Id: String? = "",
+
+    var Description: String?,
+
+    var UserId: String?,
+
+    var AmountOfMoney: Float?,
+
+    var Date: Date?,
+
+    var IdOfICType: Int?
+)
+
+data class AccountingItemInfo(
+    val AccountingType: Int, //0 - costs 1-income
+
+    val Type: String,
+
+    val Icon: String,
+
+    var IdOfICType: Int,
+
+    val AmountOfMoney: Float
+)
+
+data class IncomeRequestItem(
+    @ColumnInfo(name = "IdOfIncomeType")
+    val IdOfIncomeType: Int,
+
+    val Type: String,
+
+    val Icon: String,
+
+    val Id: String?,
+
+    val Description: String?,
+
+    val UserId: String?,
+
+    val AmountOfMoney: Float?,
+
+    val DateOfIncome: Date?
+)

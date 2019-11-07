@@ -7,7 +7,7 @@
         android:title="Учёт доходов и  расходов" />
     <item
         android:id="@+id/deptsFragment"
-        android:icon="@drawable/depts"
+        android:icon="@drawable/debt"
         android:title="Долги" />
     <item
         android:id="@+id/historyFragment"

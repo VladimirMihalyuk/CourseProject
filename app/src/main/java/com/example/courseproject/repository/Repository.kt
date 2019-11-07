@@ -3,6 +3,7 @@ package com.example.courseproject.repository
 import android.content.Context
 import androidx.lifecycle.LiveData
 import com.example.courseproject.database.AppDatabase
+import com.example.courseproject.database.CostsRequestItem
 import com.example.courseproject.database.DatabaseDAO
 import com.example.courseproject.database.Debts
 import com.example.courseproject.firebase.FirebaseHelper
@@ -79,4 +80,10 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
             database.updateDebt(debt)
         }
     }
+
+    fun getAllCosts(userId: String) = database.getAllCosts(userId)
+
+    fun getAllIncome(userId: String) = database.getAllIncome(userId)
+
+
 }

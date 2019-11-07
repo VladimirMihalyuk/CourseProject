@@ -84,7 +84,7 @@ class FirebaseHelper {
             }
         }
         fireDatabase.child("debts").child(userId).
-            addListenerForSingleValueEvent(postListener)
+            addValueEventListener(postListener)
     }
 
     fun updateDebt(debt: Debts){

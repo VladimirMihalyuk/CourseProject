@@ -34,7 +34,7 @@ class DebtPageFragment : Fragment() {
         val viewModel = activity?.run {
             ViewModelProviders.of(this, viewModelFactory)[DebtViewModel::class.java]
         }?: throw Exception("Invalid Activity")
-        binding.viewModel = viewModel
+
         binding.lifecycleOwner = this
 
         val isMine: Boolean = arguments?.getBoolean(KEY_TEXT) ?: false

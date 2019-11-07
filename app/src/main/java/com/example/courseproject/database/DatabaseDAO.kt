@@ -22,5 +22,13 @@ interface DatabaseDAO {
     @Update
     fun updateDebt(debt:Debts)
 
+    @Query("SELECT * FROM CostType LEFT JOIN Costs ON IdOfCoost=IdOfCostType and UserId = :userId")
+    fun getAllCosts(userId: String):LiveData<List<CostsRequestItem>>
+
+    @Query("SELECT IncomeType.IdOfIncomeType, Type, Icon, Id, Description, UserId," +
+            " AmountOfMoney, DateOfIncome FROM IncomeType LEFT JOIN Income ON " +
+            "IncomeType.IdOfIncomeType = Income.IdOfIncomeType and UserId = :userId")
+    fun getAllIncome(userId: String):LiveData<List<IncomeRequestItem>>
+
 
 }
