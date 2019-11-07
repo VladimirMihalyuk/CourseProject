@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 
 import com.example.courseproject.R
+import com.example.courseproject.database.Depts
 import com.example.courseproject.databinding.FragmentDebtPageBinding
 import com.example.courseproject.repository.Repository
 import kotlinx.android.synthetic.main.fragment_debt_page.view.*
@@ -40,7 +41,7 @@ class DebtPageFragment : Fragment() {
         val isMine: Boolean = arguments?.getBoolean(KEY_TEXT) ?: false
         Log.d("WTF", "$isMine")
 
-        val adapter = DebtsAdapter()
+        val adapter = DebtsAdapter(DebtClickListener{ debt: Depts -> repository.updateDebt(debt)})
         binding.recyclerView.adapter = adapter
 
 

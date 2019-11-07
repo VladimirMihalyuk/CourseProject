@@ -83,11 +83,15 @@ class FirebaseHelper {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("WTF", "loadPost:onCancelled", databaseError.toException())
+
             }
         }
         fireDatabase.child("debts").child(userId).
             addListenerForSingleValueEvent(postListener)
+    }
+
+    fun updateDebt(debt: Depts){
+        fireDatabase.child("debts").child(debt.UserId).child(debt.Id).setValue(debt)
     }
 
 

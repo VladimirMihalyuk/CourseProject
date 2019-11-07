@@ -62,12 +62,22 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
     }
 
     private fun loadDebtCallback(debts: MutableList<Depts>){
-        Log.d("WTF", "$debts")
         ioScope.launch {
             for(debt in debts){
                 database.insertDebt(debt)
             }
+        }
+    }
 
+    fun updateDebt(debt: Depts){
+        debt.IsActive = 0
+        firebaseHelper.updateDebt(debt)
+        updateDebtDB(debt)
+    }
+
+    private fun updateDebtDB(debt: Depts){
+        ioScope.launch {
+            database.updateDebt(debt)
         }
     }
 }
