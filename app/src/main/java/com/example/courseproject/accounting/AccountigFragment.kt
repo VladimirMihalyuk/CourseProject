@@ -15,6 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.courseproject.database.AccountingItemInfo
 import com.example.courseproject.databinding.FragmentAccountigBinding
 import com.example.courseproject.debts.DebtViewModel
 import com.example.courseproject.debts.DebtViewModelFactory
@@ -63,8 +64,12 @@ class AccountigFragment : Fragment() {
             dpWidth = displayMetrics.widthPixels / displayMetrics.density
         }
 
+        val onClick = AccountingInfoClickListener{ item:AccountingItemInfo ->
+            findNavController().navigate(AccountigFragmentDirections.
+                actionAccountigFragmentToAccountingItemsListFragment(item))
+        }
 
-        val costsAdapter = AdapterForAccountingItems()
+        val costsAdapter = AdapterForAccountingItems(onClick)
         binding.costs.adapter = costsAdapter
         binding.costs.layoutManager = GridLayoutManager(activity, (dpWidth/ITEM_WIDTH).toInt())
         viewModel.costsItemList.observe(this, Observer {list ->
@@ -73,7 +78,7 @@ class AccountigFragment : Fragment() {
            }
         })
 
-        val incomeAdapter = AdapterForAccountingItems()
+        val incomeAdapter = AdapterForAccountingItems(onClick)
         binding.income.adapter = incomeAdapter
         viewModel.incomeItemList.observe(this, Observer { list ->
             list?.let{
@@ -84,6 +89,7 @@ class AccountigFragment : Fragment() {
 
         return binding.root
     }
+
 
 
 }

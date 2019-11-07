@@ -22,12 +22,14 @@ interface DatabaseDAO {
     @Update
     fun updateDebt(debt:Debts)
 
-    @Query("SELECT * FROM CostType LEFT JOIN Costs ON IdOfCoost=IdOfCostType and UserId = :userId")
+    @Query("SELECT * FROM CostType LEFT JOIN Costs ON IdOfCoost=IdOfCostType " +
+            "and UserId = :userId ORDER BY DateOfCost DESC")
     fun getAllCosts(userId: String):LiveData<List<CostsRequestItem>>
 
     @Query("SELECT IncomeType.IdOfIncomeType, Type, Icon, Id, Description, UserId," +
             " AmountOfMoney, DateOfIncome FROM IncomeType LEFT JOIN Income ON " +
-            "IncomeType.IdOfIncomeType = Income.IdOfIncomeType and UserId = :userId")
+            "IncomeType.IdOfIncomeType = Income.IdOfIncomeType and " +
+            "UserId = :userId ORDER BY DateOfIncome DESC")
     fun getAllIncome(userId: String):LiveData<List<IncomeRequestItem>>
 
 

@@ -1,9 +1,11 @@
 package com.example.courseproject.database
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Entity
@@ -137,6 +139,7 @@ data class AccountingItem(
     var IdOfICType: Int?
 )
 
+@Parcelize
 data class AccountingItemInfo(
     val AccountingType: Int, //0 - costs 1-income
 
@@ -147,7 +150,7 @@ data class AccountingItemInfo(
     var IdOfICType: Int,
 
     val AmountOfMoney: Float
-)
+): Parcelable
 
 data class IncomeRequestItem(
     @ColumnInfo(name = "IdOfIncomeType")

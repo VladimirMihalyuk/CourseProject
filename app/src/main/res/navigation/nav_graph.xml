@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_accountigFragment_to_logInFlowActivity"
             app:destination="@id/logInFlowActivity" />
+        <action
+            android:id="@+id/action_accountigFragment_to_accountingItemsListFragment"
+            app:destination="@id/accountingItemsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/deptsFragment"
@@ -52,5 +55,17 @@
         <action
             android:id="@+id/action_addDeptDetailsFragment_to_deptsFragment"
             app:destination="@id/deptsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountingItemsListFragment"
+        android:name="com.example.courseproject.accounting.AccountingItemsListFragment"
+        android:label="fragment_accounting_items_list"
+        tools:layout="@layout/fragment_accounting_items_list" >
+        <action
+            android:id="@+id/action_accountingItemsListFragment_to_accountigFragment"
+            app:destination="@id/accountigFragment" />
+        <argument
+            android:name="itemInfo"
+            app:argType="com.example.courseproject.database.AccountingItemInfo" />
     </fragment>
 </navigation>

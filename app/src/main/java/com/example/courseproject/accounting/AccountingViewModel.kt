@@ -7,6 +7,11 @@ import com.example.courseproject.App
 import com.example.courseproject.database.AccountingItem
 import com.example.courseproject.database.AccountingItemInfo
 import com.example.courseproject.repository.Repository
+import java.util.*
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+
 
 class AccountingViewModel(val repository: Repository) : ViewModel() {
     private val costs =
@@ -48,6 +53,13 @@ class AccountingViewModel(val repository: Repository) : ViewModel() {
 
     val totalIncome: LiveData<String> =  Transformations.map(incomeItemList){
         it.getTotalCount()
+    }
+
+    companion object{
+        private  val formatter = SimpleDateFormat("dd-MM-yyyy")
+        fun parseDateToString(date: Date): String{
+            return formatter.format(date)
+        }
     }
 
 }

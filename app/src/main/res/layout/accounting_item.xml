@@ -7,12 +7,16 @@
         <variable
             name="item"
             type="com.example.courseproject.database.AccountingItemInfo" />
+        <variable
+            name="onClick"
+            type="com.example.courseproject.accounting.AccountingInfoClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="80dp"
         android:layout_height="90dp"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:onClick="@{() -> onClick.onClick(item)}">
 
         <ImageView
             android:id="@+id/icon"

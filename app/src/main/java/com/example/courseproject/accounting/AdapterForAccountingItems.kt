@@ -12,12 +12,12 @@ import com.example.courseproject.databinding.DebtsListItemBinding
 import com.example.courseproject.debts.DebtsAdapter
 
 
-class AdapterForAccountingItems:
+class AdapterForAccountingItems(val onClick: AccountingInfoClickListener):
     ListAdapter<AccountingItemInfo, AdapterForAccountingItems.ViewHolder>(DiffCallback()){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, onClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,8 +29,9 @@ class AdapterForAccountingItems:
     class ViewHolder private constructor(val binding: AccountingItemBinding):
         RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: AccountingItemInfo){
+        fun bind(item: AccountingItemInfo, onClick: AccountingInfoClickListener){
             binding.item = item
+            binding.onClick = onClick
             binding.executePendingBindings()
         }
 
@@ -43,6 +44,11 @@ class AdapterForAccountingItems:
         }
     }
 }
+
+class AccountingInfoClickListener(val clickListener: (item: AccountingItemInfo) -> Unit){
+    fun onClick(item: AccountingItemInfo) = clickListener(item)
+}
+
 
 
 
