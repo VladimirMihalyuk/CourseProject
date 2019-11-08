@@ -64,8 +64,17 @@
         <action
             android:id="@+id/action_accountingItemsListFragment_to_accountigFragment"
             app:destination="@id/accountigFragment" />
-        <argument
-            android:name="itemInfo"
-            app:argType="com.example.courseproject.database.AccountingItemInfo" />
+        <action
+            android:id="@+id/action_accountingItemsListFragment_to_addAccountingItemFragment"
+            app:destination="@id/addAccountingItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAccountingItemFragment"
+        android:name="com.example.courseproject.accounting.AddAccountingItemFragment"
+        android:label="fragment_add_accounting_item"
+        tools:layout="@layout/fragment_add_accounting_item" >
+        <action
+            android:id="@+id/action_addAccountingItemFragment_to_accountingItemsListFragment"
+            app:destination="@id/accountingItemsListFragment" />
     </fragment>
 </navigation>

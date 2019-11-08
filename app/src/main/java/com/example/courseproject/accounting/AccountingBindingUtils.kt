@@ -1,6 +1,7 @@
 package com.example.courseproject.accounting
 
 import android.graphics.Color
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -38,6 +39,24 @@ fun TextView.setMoneyItem(item: AccountingItem?){
             this.setTextColor(Color.GREEN)
         else
             this.setTextColor(Color.RED)
+    }
+}
+
+@BindingAdapter("descriptionFocus")
+fun EditText.setPasswordFocusListener(item: AccountingViewModel) {
+    setOnFocusChangeListener { _, focused ->
+        if(!focused){
+            item.checkDescription()
+        }
+    }
+}
+
+@BindingAdapter("moneyFocusChanged")
+fun EditText.setConfirmPasswordFocusListener(item: AccountingViewModel) {
+    setOnFocusChangeListener { _, focused ->
+        if(!focused){
+            item.checkMoney()
+        }
     }
 }
 

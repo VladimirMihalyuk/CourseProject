@@ -27,8 +27,11 @@ val ITEM_WIDTH = 80
 class AccountigFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(App.prefs?.idClient == null)
-            findNavController().navigate(AccountigFragmentDirections.actionAccountigFragmentToLogInFlowActivity())
+        if(App.prefs?.idClient == null){
+            findNavController().
+                navigate(AccountigFragmentDirections.actionAccountigFragmentToLogInFlowActivity())
+        }
+
     }
 
 
@@ -51,22 +54,17 @@ class AccountigFragment : Fragment() {
         }?: throw Exception("Invalid Activity")
 
         binding.viewModel = viewModel
-//        viewModel.costsItemsMap.observe(this, Observer { list ->
-//            Log.d("WTF", "$list")
-//        })
 
-
-
-
-        val displayMetrics = context?.getResources()?.displayMetrics
+        val displayMetrics = context?.resources?.displayMetrics
         var dpWidth = 0F
         if(displayMetrics != null){
             dpWidth = displayMetrics.widthPixels / displayMetrics.density
         }
 
         val onClick = AccountingInfoClickListener{ item:AccountingItemInfo ->
+            AccountingViewModel.itemInfo = item
             findNavController().navigate(AccountigFragmentDirections.
-                actionAccountigFragmentToAccountingItemsListFragment(item))
+                actionAccountigFragmentToAccountingItemsListFragment())
         }
 
         val costsAdapter = AdapterForAccountingItems(onClick)

@@ -4,7 +4,9 @@ package com.example.courseproject.firebase
 
 import android.util.Log
 import com.example.courseproject.App
+import com.example.courseproject.database.Costs
 import com.example.courseproject.database.Debts
+import com.example.courseproject.database.Income
 import com.example.courseproject.database.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -71,6 +73,20 @@ class FirebaseHelper {
         return debt
     }
 
+    fun addIncome(userId: String, income:Income): Income {
+        val id = fireDatabase.child("income").child(userId).push().key ?: ""
+        income.Id = id
+        fireDatabase.child("income").child(userId).child(id).setValue(income)
+        return income
+    }
+
+    fun addCost(userId:String, cost: Costs): Costs {
+        val id = fireDatabase.child("costs").child(userId).push().key ?: ""
+        cost.Id = id
+        fireDatabase.child("costs").child(userId).child(id).setValue(cost)
+        return cost
+    }
+
     fun loadAllDebts(userId: String, callback: (list: MutableList<Debts>) -> Unit){
         val menu: MutableList<Debts> = mutableListOf()
         val postListener = object : ValueEventListener {
@@ -84,6 +100,34 @@ class FirebaseHelper {
             }
         }
         fireDatabase.child("debts").child(userId).
+            addValueEventListener(postListener)
+    }
+
+    fun loadAllIncome(userId: String, callback: (list: MutableList<Income>) -> Unit){
+        val menu: MutableList<Income> = mutableListOf()
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.mapNotNullTo(menu) { it.getValue<Income>(Income::class.java) }
+                callback(menu)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        }
+        fireDatabase.child("income").child(userId).
+            addValueEventListener(postListener)
+    }
+
+    fun loadAllCosts(userId: String, callback: (list: MutableList<Costs>) -> Unit){
+        val menu: MutableList<Costs> = mutableListOf()
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.mapNotNullTo(menu) { it.getValue<Costs>(Costs::class.java) }
+                callback(menu)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) { }
+        }
+        fireDatabase.child("costs").child(userId).
             addValueEventListener(postListener)
     }
 

@@ -6,12 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-
+import androidx.navigation.fragment.findNavController
 import com.example.courseproject.R
+import com.example.courseproject.databinding.FragmentAccountingItemsListBinding
 import com.example.courseproject.repository.Repository
-import kotlinx.android.synthetic.main.fragment_accounting_items_list.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -22,8 +23,10 @@ class AccountingItemsListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_accounting_items_list,
+        val binding:FragmentAccountingItemsListBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_accounting_items_list,
             container, false)
+
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
         val viewModelFactory = AccountingViewModelFactory(repository)
@@ -31,11 +34,11 @@ class AccountingItemsListFragment : Fragment() {
             ViewModelProviders.of(this, viewModelFactory)[AccountingViewModel::class.java]
         }?: throw Exception("Invalid Activity")
 
-        val item = AccountingItemsListFragmentArgs.fromBundle(arguments!!).itemInfo
+
 
         val adapter = AdapterForListOfAccountingItems()
-        view.list.adapter = adapter
-
+        binding.list.adapter = adapter
+        val item = AccountingViewModel.itemInfo
         if(item.AccountingType ==1 ){
             viewModel.incomeItemsMap.observe(this, Observer { map ->
                 map?.let{
@@ -50,9 +53,13 @@ class AccountingItemsListFragment : Fragment() {
             })
         }
 
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(AccountingItemsListFragmentDirections.actionAccountingItemsListFragmentToAddAccountingItemFragment())
+        }
 
 
-        return view
+
+        return binding.root
     }
 
 

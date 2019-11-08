@@ -50,7 +50,9 @@ data class Income(
     var DateOfIncome: Date,
 
     var IdOfIncomeType: Int
-)
+){
+    constructor():this("","","",0F, Date(),1)
+}
 
 @Entity
 data class Costs(
@@ -66,7 +68,9 @@ data class Costs(
     var DateOfCost: Date,
 
     var IdOfCostType: Int
-)
+){
+    constructor():this("","","",0F, Date(),1)
+}
 
 
 
@@ -99,7 +103,7 @@ class Converters {
 
     @TypeConverter
     fun dateToTimestamp(date: Date?): Long? {
-        return date?.time?.toLong()
+        return date?.time
     }
 }
 

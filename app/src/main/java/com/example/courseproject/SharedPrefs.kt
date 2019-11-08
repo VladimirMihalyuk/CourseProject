@@ -9,12 +9,17 @@ val prefs: Prefs by lazy {
 }
 
 class App : Application() {
+
+
     companion object {
+        private lateinit var context: Context
         var prefs: Prefs? = null
+        fun getContext() = App.context
     }
 
     override fun onCreate() {
         super.onCreate()
+        App.context = applicationContext
         prefs = Prefs(applicationContext)
     }
 }

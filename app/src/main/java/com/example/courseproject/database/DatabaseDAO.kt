@@ -9,7 +9,7 @@ interface DatabaseDAO {
     fun insertAll(vararg cost: Costs)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDebt(cost: Debts)
+    fun insertDebt(debt: Debts)
 
     //Мои долги
     @Query("SELECT * FROM Debts WHERE IsMineDept == 1 and UserId = :userId and IsActive = 1")
@@ -31,6 +31,12 @@ interface DatabaseDAO {
             "IncomeType.IdOfIncomeType = Income.IdOfIncomeType and " +
             "UserId = :userId ORDER BY DateOfIncome DESC")
     fun getAllIncome(userId: String):LiveData<List<IncomeRequestItem>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertIncome(income: Income)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCost(cost: Costs)
 
 
 }

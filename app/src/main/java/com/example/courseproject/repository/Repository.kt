@@ -2,10 +2,7 @@ package com.example.courseproject.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import com.example.courseproject.database.AppDatabase
-import com.example.courseproject.database.CostsRequestItem
-import com.example.courseproject.database.DatabaseDAO
-import com.example.courseproject.database.Debts
+import com.example.courseproject.database.*
 import com.example.courseproject.firebase.FirebaseHelper
 import kotlinx.coroutines.*
 
@@ -61,10 +58,38 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
         }
     }
 
+    fun loadAllIncome(userId: String){
+        firebaseHelper.loadAllIncome(userId){
+            loadIncomeCallback(it)
+        }
+    }
+
+    fun loadAllCosts(userId: String){
+        firebaseHelper.loadAllCosts(userId){
+            loadCostsCallback(it)
+        }
+    }
+
     private fun loadDebtCallback(debts: MutableList<Debts>){
         ioScope.launch {
             for(debt in debts){
                 database.insertDebt(debt)
+            }
+        }
+    }
+
+    private fun loadIncomeCallback(income: MutableList<Income>){
+        ioScope.launch {
+            for(item in income){
+                database.insertIncome(item)
+            }
+        }
+    }
+
+    private fun loadCostsCallback(costs: MutableList<Costs>){
+        ioScope.launch {
+            for(cost in costs){
+                database.insertCost(cost)
             }
         }
     }
@@ -81,9 +106,30 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
         }
     }
 
+
     fun getAllCosts(userId: String) = database.getAllCosts(userId)
 
     fun getAllIncome(userId: String) = database.getAllIncome(userId)
+
+    fun insertIncome(userId: String, income: Income, finishCallback: () -> Unit){
+        val incomeFB = firebaseHelper.addIncome(userId, income)
+        ioScope.launch {
+            database.insertIncome(incomeFB)
+            withContext(Dispatchers.Main){
+                finishCallback()
+            }
+        }
+    }
+
+    fun insertCost(userId: String, cost: Costs, finishCallback: () -> Unit){
+        val costFB = firebaseHelper.addCost(userId, cost)
+        ioScope.launch {
+            database.insertCost(costFB)
+            withContext(Dispatchers.Main){
+                finishCallback()
+            }
+        }
+    }
 
 
 }
