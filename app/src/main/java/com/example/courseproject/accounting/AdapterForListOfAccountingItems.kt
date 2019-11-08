@@ -11,13 +11,13 @@ import com.example.courseproject.databinding.AccountingListItemBinding
 class AdapterForListOfAccountingItems :
     ListAdapter<AccountingItem, AdapterForListOfAccountingItems.ViewHolder>(DiffCallbackItems()){
 
-    override fun onBindViewHolder(holder: AdapterForListOfAccountingItems.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterForListOfAccountingItems.ViewHolder {
-        return AdapterForListOfAccountingItems.ViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
     }
 
 
@@ -29,10 +29,10 @@ class AdapterForListOfAccountingItems :
         }
 
         companion object{
-            fun from(parent: ViewGroup): AdapterForListOfAccountingItems.ViewHolder {
+            fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = AccountingListItemBinding.inflate(layoutInflater, parent, false)
-                return AdapterForListOfAccountingItems.ViewHolder(binding)
+                return ViewHolder(binding)
             }
         }
     }

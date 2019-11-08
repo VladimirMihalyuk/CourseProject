@@ -131,5 +131,8 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
         }
     }
 
+    fun getAllCostsForHistory(userId: String) = database.getAllCostsForHistory(userId)
+
+    fun getAllIncomeForHistory(userId: String) = database.getAllIncomeForHistory(userId)
 
 }

@@ -50,10 +50,6 @@ class AccountingInfoClickListener(val clickListener: (item: AccountingItemInfo) 
 }
 
 
-
-
-
-
 private class DiffCallback: DiffUtil.ItemCallback<AccountingItemInfo>(){
     override fun areItemsTheSame(oldItem: AccountingItemInfo, newItem: AccountingItemInfo): Boolean {
         return oldItem.IdOfICType == newItem.IdOfICType

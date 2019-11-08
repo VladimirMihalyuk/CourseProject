@@ -38,5 +38,12 @@ interface DatabaseDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCost(cost: Costs)
 
+    @Query("SELECT Description, AmountOfMoney," +
+            " DateOfCost, Icon FROM Costs INNER JOIN CostType ON IdOfCostType == IdOfCoost WHERE UserId = :userId")
+    fun getAllCostsForHistory(userId: String):LiveData<List<HistoryCostRequest>>
+
+    @Query("SELECT Description, AmountOfMoney, DateOfIncome, Icon FROM Income INNER JOIN " +
+            "IncomeType ON Income.IdOfIncomeType == IncomeType.IdOfIncomeType WHERE UserId = :userId")
+    fun getAllIncomeForHistory(userId: String):LiveData<List<HistoryIncomeRequest>>
 
 }
