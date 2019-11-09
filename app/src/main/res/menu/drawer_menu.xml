@@ -14,11 +14,7 @@
         android:icon="@drawable/history"
         android:title="Выписка" />
     <item
-        android:id="@+id/graphsFragment"
-        android:icon="@drawable/graphics"
-        android:title="График расходов" />
-    <item
         android:id="@+id/pireChartsFragment"
         android:icon="@drawable/pie_chart"
-        android:title="Циклограмма расходов" />
+        android:title="Статистика" />
 </menu>

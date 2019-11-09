@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/logUpFragment2"
         android:name="com.example.courseproject.log_up.LogUpFragment"
-        android:label="LogUpFragment"
+        android:label="Регистрация"
         tools:layout="@layout/fragment_log_up">
         <action
             android:id="@+id/action_logUpFragment2_to_loginFragment2"

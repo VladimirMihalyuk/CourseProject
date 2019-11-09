@@ -9,8 +9,8 @@
     <fragment
         android:id="@+id/accountigFragment"
         android:name="com.example.courseproject.accounting.AccountigFragment"
-        android:label="fragment_accountig"
-        tools:layout="@layout/fragment_accountig" >
+        android:label="Учёт"
+        tools:layout="@layout/fragment_accountig">
         <action
             android:id="@+id/action_accountigFragment_to_logInFlowActivity"
             app:destination="@id/logInFlowActivity" />
@@ -21,26 +21,21 @@
     <fragment
         android:id="@+id/deptsFragment"
         android:name="com.example.courseproject.debts.DebtsFragment"
-        android:label="fragment_depts"
-        tools:layout="@layout/fragment_debts" >
+        android:label="Долги"
+        tools:layout="@layout/fragment_debts">
         <action
             android:id="@+id/action_deptsFragment_to_addDeptDetailsFragment"
             app:destination="@id/addDeptDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/graphsFragment"
-        android:name="com.example.courseproject.graphs.GraphsFragment"
-        android:label="fragment_graphs"
-        tools:layout="@layout/fragment_graphs" />
-    <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.courseproject.history.HistoryFragment"
-        android:label="fragment_history"
+        android:label="Выписка"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/pireChartsFragment"
         android:name="com.example.courseproject.pie_charts.PireChartsFragment"
-        android:label="fragment_pire_charts"
+        android:label="Статистика"
         tools:layout="@layout/fragment_pire_charts" />
     <activity
         android:id="@+id/logInFlowActivity"
@@ -50,8 +45,8 @@
     <fragment
         android:id="@+id/addDeptDetailsFragment"
         android:name="com.example.courseproject.debts.AddDebtDetailsFragment"
-        android:label="fragment_add_dept_details"
-        tools:layout="@layout/fragment_add_debt_details" >
+        android:label="Добавить долг"
+        tools:layout="@layout/fragment_add_debt_details">
         <action
             android:id="@+id/action_addDeptDetailsFragment_to_deptsFragment"
             app:destination="@id/deptsFragment" />
@@ -59,8 +54,8 @@
     <fragment
         android:id="@+id/accountingItemsListFragment"
         android:name="com.example.courseproject.accounting.AccountingItemsListFragment"
-        android:label="fragment_accounting_items_list"
-        tools:layout="@layout/fragment_accounting_items_list" >
+        android:label="Записи"
+        tools:layout="@layout/fragment_accounting_items_list">
         <action
             android:id="@+id/action_accountingItemsListFragment_to_accountigFragment"
             app:destination="@id/accountigFragment" />
@@ -71,8 +66,8 @@
     <fragment
         android:id="@+id/addAccountingItemFragment"
         android:name="com.example.courseproject.accounting.AddAccountingItemFragment"
-        android:label="fragment_add_accounting_item"
-        tools:layout="@layout/fragment_add_accounting_item" >
+        android:label="Добавить запись"
+        tools:layout="@layout/fragment_add_accounting_item">
         <action
             android:id="@+id/action_addAccountingItemFragment_to_accountingItemsListFragment"
             app:destination="@id/accountingItemsListFragment" />
