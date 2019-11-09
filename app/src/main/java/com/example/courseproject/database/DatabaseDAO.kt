@@ -46,4 +46,7 @@ interface DatabaseDAO {
             "IncomeType ON Income.IdOfIncomeType == IncomeType.IdOfIncomeType WHERE UserId = :userId")
     fun getAllIncomeForHistory(userId: String):LiveData<List<HistoryIncomeRequest>>
 
+    @Query("SELECT Type, SUM(AmountOfMoney) * 100.0 /(SELECT SUM(AmountOfMoney) FROM COSTS WHERE DateOfCost > :date AND UserId = :userId)  AS Value  FROM Costs INNER JOIN CostType ON IdOfCoost == IdOfCostType WHERE DateOfCost > :date AND UserId = :userId GROUP BY IdOfCostType; ")
+    fun getCostForPieCharts(userId: String, date: Long):LiveData<List<PieChartResults>>
+
 }

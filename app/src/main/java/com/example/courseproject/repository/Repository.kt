@@ -135,4 +135,12 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
 
     fun getAllIncomeForHistory(userId: String) = database.getAllIncomeForHistory(userId)
 
+    fun gtCostsForPieChartForWeek(userId: String, date: Long)
+            = database.getCostForPieCharts(userId, date - 604800000L)//milliseconds in week
+
+    fun getCostsForPieChartForMonth(userId: String, date: Long)
+            = database.getCostForPieCharts(userId, date - 2592000000)//milliseconds in month
+    fun getCostsForPieChartForAllTime(userId: String)
+            = database.getCostForPieCharts(userId, 0)
+
 }

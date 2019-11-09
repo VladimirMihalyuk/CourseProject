@@ -112,3 +112,9 @@ data class HistoryIncomeRequest(
 
     val Icon: String
 )
+
+data class PieChartResults(
+        val Type:String,
+
+        val Value:Float
+)

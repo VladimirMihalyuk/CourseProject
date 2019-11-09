@@ -20,5 +20,5 @@
     <item
         android:id="@+id/pireChartsFragment"
         android:icon="@drawable/pie_chart"
-        android:title="Циклограмма расчётов" />
+        android:title="Циклограмма расходов" />
 </menu>
