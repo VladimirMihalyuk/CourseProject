@@ -31,10 +31,10 @@ class HistoryAdapter():
         }
 
         companion object{
-            fun from(parent: ViewGroup): HistoryAdapter.ViewHolder {
+            fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = HistoryItemBinding.inflate(layoutInflater, parent, false)
-                return HistoryAdapter.ViewHolder(binding)
+                return ViewHolder(binding)
             }
         }
     }

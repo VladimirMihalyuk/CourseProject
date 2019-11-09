@@ -28,10 +28,16 @@ class HistoryViewModel(val repository: Repository) : ViewModel()  {
 
     init {
         historyItems.addSource(incomeItems){
-            historyItems.value?.addAll(it)
+            val temp = incomeItems.value?.toMutableList() ?: mutableListOf()
+            temp.addAll(costItems.value ?: listOf())
+            temp.sortBy { -it.DateOfItem.time  }
+            historyItems.value = temp
         }
         historyItems.addSource(costItems){
-            historyItems.value?.addAll(it)
+            val temp = incomeItems.value?.toMutableList() ?: mutableListOf()
+            temp.addAll(costItems.value ?: listOf())
+            temp.sortBy { -it.DateOfItem.time  }
+            historyItems.value = temp
         }
     }
 }

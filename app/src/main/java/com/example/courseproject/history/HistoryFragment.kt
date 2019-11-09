@@ -32,12 +32,16 @@ class HistoryFragment : Fragment() {
 
         val adapter = HistoryAdapter()
         view.history.adapter = adapter
+
         viewModel.historyItems.observe(this, Observer {list ->
             list?.let {
-                //list.sortBy { it.DateOfItem < it.DateOfItem}
+                Log.d("WTF", "$list")
 
                 adapter.submitList(list)
-                Log.d("WTF", "$list")
+
+
+
+
             }
         })
 
