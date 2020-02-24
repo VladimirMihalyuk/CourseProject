@@ -1,34 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/accountigFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.courseproject.log_in.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_logUpFragment"
-            app:destination="@id/logUpFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_accountigFragment"
-            app:destination="@id/accountigFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/logUpFragment"
-        android:name="com.example.courseproject.log_up.LogUpFragment"
-        android:label="fragment_log_up"
-        tools:layout="@layout/fragment_log_up" >
-        <action
-            android:id="@+id/action_logUpFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/accountigFragment"
-        android:name="com.example.courseproject.AccountigFragment"
-        android:label="fragment_accountig"
-        tools:layout="@layout/fragment_accountig" />
+        android:name="com.example.courseproject.accounting.AccountigFragment"
+        android:label="Учёт"
+        tools:layout="@layout/fragment_accountig">
+        <action
+            android:id="@+id/action_accountigFragment_to_logInFlowActivity"
+            app:destination="@id/logInFlowActivity" />
+        <action
+            android:id="@+id/action_accountigFragment_to_accountingItemsListFragment"
+            app:destination="@id/accountingItemsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deptsFragment"
+        android:name="com.example.courseproject.debts.DebtsFragment"
+        android:label="Долги"
+        tools:layout="@layout/fragment_debts">
+        <action
+            android:id="@+id/action_deptsFragment_to_addDeptDetailsFragment"
+            app:destination="@id/addDeptDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.courseproject.history.HistoryFragment"
+        android:label="Выписка"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/pireChartsFragment"
+        android:name="com.example.courseproject.pie_charts.PireChartsFragment"
+        android:label="Статистика"
+        tools:layout="@layout/fragment_pire_charts" />
+    <activity
+        android:id="@+id/logInFlowActivity"
+        android:name="com.example.courseproject.LogInFlowActivity"
+        android:label="activity_log_in_flow"
+        tools:layout="@layout/activity_log_in_flow" />
+    <fragment
+        android:id="@+id/addDeptDetailsFragment"
+        android:name="com.example.courseproject.debts.AddDebtDetailsFragment"
+        android:label="Добавить долг"
+        tools:layout="@layout/fragment_add_debt_details">
+        <action
+            android:id="@+id/action_addDeptDetailsFragment_to_deptsFragment"
+            app:destination="@id/deptsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountingItemsListFragment"
+        android:name="com.example.courseproject.accounting.AccountingItemsListFragment"
+        android:label="Записи"
+        tools:layout="@layout/fragment_accounting_items_list">
+        <action
+            android:id="@+id/action_accountingItemsListFragment_to_accountigFragment"
+            app:destination="@id/accountigFragment" />
+        <action
+            android:id="@+id/action_accountingItemsListFragment_to_addAccountingItemFragment"
+            app:destination="@id/addAccountingItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAccountingItemFragment"
+        android:name="com.example.courseproject.accounting.AddAccountingItemFragment"
+        android:label="Добавить запись"
+        tools:layout="@layout/fragment_add_accounting_item">
+        <action
+            android:id="@+id/action_addAccountingItemFragment_to_accountingItemsListFragment"
+            app:destination="@id/accountingItemsListFragment" />
+    </fragment>
 </navigation>

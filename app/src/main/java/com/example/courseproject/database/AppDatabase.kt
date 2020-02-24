@@ -7,11 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 
-@Database(entities = [User::class, Depts::class, Income::class, Costs::class, IncomeType::class, CostType::class ],
-    version = 3, exportSchema = true)
+@Database(entities = [User::class, Debts::class, Income::class, Costs::class, IncomeType::class, CostType::class ],
+    version = 4, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase  : RoomDatabase() {
     abstract val databaseDao: DatabaseDAO
+
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
@@ -25,7 +26,7 @@ abstract class AppDatabase  : RoomDatabase() {
                         AppDatabase::class.java,
                         "Database.db"
                     ).fallbackToDestructiveMigration()
-                     //.createFromAsset("database/Database.db")
+                     .createFromAsset("database/Database.db")
                      .build()
                     INSTANCE = instance
                 }

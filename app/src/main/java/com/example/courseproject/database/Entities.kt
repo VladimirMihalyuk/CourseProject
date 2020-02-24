@@ -16,7 +16,7 @@ data class User(
 )
 
 @Entity
-data class Depts(
+data class Debts(
     @PrimaryKey
     var Id: String = "",
 
@@ -29,12 +29,16 @@ data class Depts(
     var Name: String,
 
     var IsActive: Int
-)
+){
+    constructor():this("", "", 0F, 1, "", 1)
+}
 
 @Entity
 data class Income(
     @PrimaryKey
     var Id: String = "",
+
+    var Description: String,
 
     var UserId: String,
 
@@ -43,12 +47,16 @@ data class Income(
     var DateOfIncome: Date,
 
     var IdOfIncomeType: Int
-)
+){
+    constructor():this("","","",0F, Date(),1)
+}
 
 @Entity
 data class Costs(
     @PrimaryKey
     var Id: String = "",
+
+    var Description: String,
 
     var UserId: String,
 
@@ -57,7 +65,11 @@ data class Costs(
     var DateOfCost: Date,
 
     var IdOfCostType: Int
-)
+){
+    constructor():this("","","",0F, Date(),1)
+}
+
+
 
 @Entity
 data class IncomeType(
@@ -88,7 +100,13 @@ class Converters {
 
     @TypeConverter
     fun dateToTimestamp(date: Date?): Long? {
-        return date?.time?.toLong()
+        return date?.time
     }
 }
+
+
+
+
+
+
 

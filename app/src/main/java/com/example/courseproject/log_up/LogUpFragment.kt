@@ -6,8 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
@@ -49,16 +48,16 @@ class LogUpFragment : Fragment() {
             }
         })
 
-        viewModel.isPasswordValid.observe(this , Observer { flag ->
-            if(flag){
+        viewModel.isPasswordValid.observe(this , Observer { correct ->
+            if(correct){
                 binding.passwordlLayout.isErrorEnabled = false
             } else {
                 binding.passwordlLayout.error = "Пароль должен быть не меньше 8 символов"
             }
         })
 
-        viewModel.isConfirmPasswordValid.observe(this, Observer {flag ->
-            if(flag){
+        viewModel.isConfirmPasswordValid.observe(this, Observer {correct ->
+            if(correct){
                 binding.confirmPasswordlLayout.isErrorEnabled = false
             } else {
                 binding.confirmPasswordlLayout.error = "Введённые пароли не совпадают"
@@ -85,10 +84,12 @@ class LogUpFragment : Fragment() {
                 activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 binding.progressCircular.visibility = VISIBLE
+                binding.loadLayout.visibility = VISIBLE
 
             } else {
                 activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 binding.progressCircular.visibility = GONE
+                binding.loadLayout.visibility = INVISIBLE
 
             }
         })
