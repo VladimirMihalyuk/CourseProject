@@ -3,7 +3,7 @@ Worked with:
 - Kotlin
 - MVVM
 - Repository
-- Firebase Authorization
+- Firebase Authentication
 - Firebase Realtime Database
 - Data Binding
 - Room
