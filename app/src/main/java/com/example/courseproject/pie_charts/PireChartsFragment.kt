@@ -10,7 +10,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 
 import com.example.courseproject.R
-import com.example.courseproject.debts.DebtPageFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_debts.view.*
 
@@ -24,7 +23,8 @@ class PireChartsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_pire_charts, container, false)
+        val view = inflater.inflate(R.layout.fragment_pire_charts,
+            container, false)
 
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         view.viewPager2.adapter = pagerAdapter

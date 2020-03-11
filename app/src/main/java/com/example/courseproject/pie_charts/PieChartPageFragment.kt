@@ -62,19 +62,16 @@ class PieChartPageFragment : Fragment() {
         when(number){
             1 -> {
                 viewModel.week.observe(this, Observer { list ->
-                    Log.d("WTF", "$list")
                     drawChart(pieChart, list)
                 })
             }
             2 -> {
                 viewModel.month.observe(this, Observer { list ->
-                    Log.d("WTF", "$list")
                     drawChart(pieChart, list)
                 })
             }
             3 -> {
                 viewModel.allTime.observe(this, Observer { list ->
-                    Log.d("WTF", "$list")
                     drawChart(pieChart, list)
                 })
             }

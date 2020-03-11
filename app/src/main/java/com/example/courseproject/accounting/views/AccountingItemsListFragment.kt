@@ -1,4 +1,4 @@
-package com.example.courseproject.accounting
+package com.example.courseproject.accounting.views
 
 
 import android.os.Bundle
@@ -11,6 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.courseproject.R
+
+import com.example.courseproject.accounting.view_model.AccountingViewModel
+import com.example.courseproject.accounting.view_model.AccountingViewModelFactory
+import com.example.courseproject.accounting.AdapterForListOfAccountingItems
 import com.example.courseproject.databinding.FragmentAccountingItemsListBinding
 import com.example.courseproject.repository.Repository
 
@@ -29,7 +33,8 @@ class AccountingItemsListFragment : Fragment() {
 
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
-        val viewModelFactory = AccountingViewModelFactory(repository)
+        val viewModelFactory =
+            AccountingViewModelFactory(repository)
         val viewModel = activity?.run {
             ViewModelProviders.of(this, viewModelFactory)[AccountingViewModel::class.java]
         }?: throw Exception("Invalid Activity")
@@ -54,13 +59,10 @@ class AccountingItemsListFragment : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(AccountingItemsListFragmentDirections.actionAccountingItemsListFragmentToAddAccountingItemFragment())
+            findNavController()
+                .navigate(AccountingItemsListFragmentDirections
+                    .actionAccountingItemsListFragmentToAddAccountingItemFragment())
         }
-
-
-
         return binding.root
     }
-
-
 }

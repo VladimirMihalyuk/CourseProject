@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.courseproject.accounting.AccountingViewModel" />
+            type="com.example.courseproject.accounting.view_model.AccountingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".accounting.AddAccountingItemFragment">
+        tools:context=".accounting.views.AddAccountingItemFragment">
 
         <FrameLayout
             android:id="@+id/loadLayout"
@@ -48,7 +48,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".accounting.AddAccountingItemFragment">
+                tools:context=".accounting.views.AddAccountingItemFragment">
 
                 <Button
                     android:id="@+id/addItem"

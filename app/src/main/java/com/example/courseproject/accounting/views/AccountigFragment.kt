@@ -1,9 +1,8 @@
-package com.example.courseproject.accounting
+package com.example.courseproject.accounting.views
 
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +14,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.courseproject.accounting.*
+import com.example.courseproject.accounting.view_model.AccountingViewModel
+import com.example.courseproject.accounting.view_model.AccountingViewModelFactory
 import com.example.courseproject.database.AccountingItemInfo
 import com.example.courseproject.databinding.FragmentAccountigBinding
-import com.example.courseproject.debts.DebtViewModel
-import com.example.courseproject.debts.DebtViewModelFactory
 import com.example.courseproject.repository.Repository
 
 
@@ -48,7 +48,8 @@ class AccountigFragment : Fragment() {
 
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
-        val viewModelFactory = AccountingViewModelFactory(repository)
+        val viewModelFactory =
+            AccountingViewModelFactory(repository)
         val viewModel = activity?.run {
             ViewModelProviders.of(this, viewModelFactory)[AccountingViewModel::class.java]
         }?: throw Exception("Invalid Activity")
@@ -61,15 +62,17 @@ class AccountigFragment : Fragment() {
             dpWidth = displayMetrics.widthPixels / displayMetrics.density
         }
 
-        val onClick = AccountingInfoClickListener{ item:AccountingItemInfo ->
-            AccountingViewModel.itemInfo = item
-            findNavController().navigate(AccountigFragmentDirections.
-                actionAccountigFragmentToAccountingItemsListFragment())
-        }
+        val onClick =
+            AccountingInfoClickListener { item: AccountingItemInfo ->
+                AccountingViewModel.itemInfo = item
+                findNavController()
+                    .navigate(AccountigFragmentDirections
+                        .actionAccountigFragmentToAccountingItemsListFragment())
+            }
 
         val costsAdapter = AdapterForAccountingItems(onClick)
         binding.costs.adapter = costsAdapter
-        binding.costs.layoutManager = GridLayoutManager(activity, (dpWidth/ITEM_WIDTH).toInt())
+        binding.costs.layoutManager = GridLayoutManager(activity, (dpWidth/ ITEM_WIDTH).toInt())
         viewModel.costsItemList.observe(this, Observer {list ->
            list?.let{
                costsAdapter.submitList(list)
@@ -83,11 +86,6 @@ class AccountigFragment : Fragment() {
                 incomeAdapter.submitList(list)
             }
         })
-
-
         return binding.root
     }
-
-
-
 }

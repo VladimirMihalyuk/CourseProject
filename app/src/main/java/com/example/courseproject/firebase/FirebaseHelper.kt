@@ -19,14 +19,10 @@ class FirebaseHelper {
     private val mAuth:FirebaseAuth = FirebaseAuth.getInstance()
     private val fireDatabase = FirebaseDatabase.getInstance().reference
 
-
-
-
     fun signIn(email: String, password: String, completionListener: (isSuccessful: Boolean) -> Unit){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             completionListener(task.isSuccessful)
             if(task.isSuccessful){
-                Log.d("WTF", "${task.result?.user?.uid}")
                 App.prefs?.idClient = task.result?.user?.uid
             }
         }
@@ -34,14 +30,12 @@ class FirebaseHelper {
 
     fun signUp(email: String, password: String,  completionListener: (isSuccessful: Boolean) -> Unit){
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-
             try {
                 loadUser(task.isSuccessful, task.result?.user?.uid, email, password)
                 completionListener(task.isSuccessful)
             }catch (e: Exception){
                 completionListener(false)
             }
-
         }
     }
 
@@ -61,7 +55,6 @@ class FirebaseHelper {
         uid?.let{
             val user = User(uid, email, password)
             fireDatabase.child("user").child(uid).setValue(user)
-            Log.d("FIRE", "$uid")
         }
 
     }

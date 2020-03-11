@@ -35,18 +35,10 @@ class HistoryFragment : Fragment() {
 
         viewModel.historyItems.observe(this, Observer {list ->
             list?.let {
-                Log.d("WTF", "$list")
-
                 adapter.submitList(list)
-
-
-
-
             }
         })
 
         return view
     }
-
-
 }

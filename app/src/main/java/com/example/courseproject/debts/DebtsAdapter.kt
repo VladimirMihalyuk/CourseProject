@@ -34,7 +34,8 @@ class DebtsAdapter(val clickListener: DebtClickListener):
         companion object{
             fun from(parent: ViewGroup):ViewHolder{
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = DebtsListItemBinding.inflate(layoutInflater, parent, false)
+                val binding
+                        = DebtsListItemBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }

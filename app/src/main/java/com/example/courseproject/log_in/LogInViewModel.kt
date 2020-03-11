@@ -18,7 +18,8 @@ class LogInViewModel(val repository: Repository) : ViewModel(){
         checkEmail()
         checkPassword()
         if(isEmailValid.value == true && isPasswordValid.value == true){
-            repository.logIn(email.value ?: "", password.value ?: "") { value -> finishedEvent(value)}
+            repository.logIn(email.value ?: "", password.value ?: "")
+            { value -> finishedEvent(value)}
         } else {
             _errorCode.value = 2 //wrong fields
         }

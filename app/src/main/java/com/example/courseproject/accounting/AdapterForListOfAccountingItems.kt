@@ -31,7 +31,9 @@ class AdapterForListOfAccountingItems :
         companion object{
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = AccountingListItemBinding.inflate(layoutInflater, parent, false)
+                val binding
+                        = AccountingListItemBinding.inflate(layoutInflater,
+                    parent, false)
                 return ViewHolder(binding)
             }
         }

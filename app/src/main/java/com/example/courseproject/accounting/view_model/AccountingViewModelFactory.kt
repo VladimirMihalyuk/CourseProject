@@ -1,4 +1,4 @@
-package com.example.courseproject.accounting
+package com.example.courseproject.accounting.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

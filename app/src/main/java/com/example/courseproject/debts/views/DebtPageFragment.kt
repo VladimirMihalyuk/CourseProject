@@ -1,4 +1,4 @@
-package com.example.courseproject.debts
+package com.example.courseproject.debts.views
 
 
 import android.os.Bundle
@@ -15,6 +15,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.courseproject.R
 import com.example.courseproject.database.Debts
 import com.example.courseproject.databinding.FragmentDebtPageBinding
+import com.example.courseproject.debts.*
+import com.example.courseproject.debts.view_model.DebtViewModel
+import com.example.courseproject.debts.view_model.DebtViewModelFactory
 import com.example.courseproject.repository.Repository
 
 /**
@@ -30,7 +33,8 @@ class DebtPageFragment : Fragment() {
             R.layout.fragment_debt_page, container, false)
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
-        val viewModelFactory = DebtViewModelFactory(repository)
+        val viewModelFactory =
+            DebtViewModelFactory(repository)
         val viewModel = activity?.run {
             ViewModelProviders.of(this, viewModelFactory)[DebtViewModel::class.java]
         }?: throw Exception("Invalid Activity")
@@ -40,7 +44,10 @@ class DebtPageFragment : Fragment() {
         val isMine: Boolean = arguments?.getBoolean(KEY_TEXT) ?: false
         Log.d("WTF", "$isMine")
 
-        val adapter = DebtsAdapter(DebtClickListener{ debt: Debts -> repository.updateDebt(debt)})
+        val adapter =
+            DebtsAdapter(DebtClickListener { debt: Debts ->
+                repository.updateDebt(debt)
+            })
         binding.recyclerView.adapter = adapter
 
 
@@ -60,7 +67,8 @@ class DebtPageFragment : Fragment() {
 
 
         binding.addButton.setOnClickListener{
-            findNavController().navigate(DebtsFragmentDirections.actionDeptsFragmentToAddDeptDetailsFragment())
+            findNavController()
+                .navigate(DebtsFragmentDirections.actionDeptsFragmentToAddDeptDetailsFragment())
         }
 
         return binding.root

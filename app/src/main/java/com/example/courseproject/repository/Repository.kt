@@ -6,9 +6,10 @@ import com.example.courseproject.database.*
 import com.example.courseproject.firebase.FirebaseHelper
 import kotlinx.coroutines.*
 
-class Repository private constructor( private var  firebaseHelper:FirebaseHelper, private var  database: DatabaseDAO){
-    private var viewModelJob = Job()
-    private val ioScope = CoroutineScope(Dispatchers.IO + viewModelJob)
+class Repository private constructor( private var  firebaseHelper:FirebaseHelper,
+                                      private var  database: DatabaseDAO){
+    private var job = Job()
+    private val ioScope = CoroutineScope(Dispatchers.IO + job)
 
     companion object{
         @Volatile
@@ -40,7 +41,6 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
             withContext(Dispatchers.Main){
                 finishCallback()
             }
-
         }
     }
 
@@ -131,9 +131,11 @@ class Repository private constructor( private var  firebaseHelper:FirebaseHelper
         }
     }
 
-    fun getAllCostsForHistory(userId: String) = database.getAllCostsForHistory(userId)
+    fun getAllCostsForHistory(userId: String)
+            = database.getAllCostsForHistory(userId)
 
-    fun getAllIncomeForHistory(userId: String) = database.getAllIncomeForHistory(userId)
+    fun getAllIncomeForHistory(userId: String)
+            = database.getAllIncomeForHistory(userId)
 
     fun gtCostsForPieChartForWeek(userId: String, date: Long)
             = database.getCostForPieCharts(userId, date - 604800000L)//milliseconds in week

@@ -36,7 +36,8 @@ class LoginFragment : Fragment() {
            R.layout.fragment_login, container, false)
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
         val viewModelFactory = LogInViewModelFactory(repository)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(LogInViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(LogInViewModel::class.java)
         binding.viewModel = viewModel
 
         binding.lifecycleOwner = this
@@ -59,7 +60,8 @@ class LoginFragment : Fragment() {
 
         viewModel.moveToRegistrationFragmentEvent.observe(this, Observer {event ->
             if(event){
-                this.findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToLogUpFragment2())
+                this.findNavController()
+                    .navigate(LoginFragmentDirections.actionLoginFragment2ToLogUpFragment2())
                 viewModel.resetEvent()
             }
         })
@@ -76,16 +78,13 @@ class LoginFragment : Fragment() {
                 mySnackbar.show()
             } else {
                 try{
-                    this.findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToMainActivity())
+                    this.findNavController()
+                        .navigate(LoginFragmentDirections.actionLoginFragment2ToMainActivity())
                 } catch (e: Exception){
                     Log.e("WTF", "${e.message}")
                 }
-
             }
-
-
         })
-
         return binding.root
     }
 

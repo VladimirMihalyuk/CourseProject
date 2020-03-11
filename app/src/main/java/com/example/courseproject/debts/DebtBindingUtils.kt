@@ -3,7 +3,7 @@ package com.example.courseproject.debts
 import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.courseproject.log_in.LogInViewModel
+import com.example.courseproject.debts.view_model.DebtViewModel
 
 @BindingAdapter("nameFocus")
 fun EditText.setNameFocusListener(item: DebtViewModel) {

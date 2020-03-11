@@ -34,7 +34,8 @@ class LogUpFragment : Fragment() {
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
         val viewModelFactory = LogUpViewModelFactory(repository)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(LogUpViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(LogUpViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 

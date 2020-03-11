@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/accountigFragment"
-        android:name="com.example.courseproject.accounting.AccountigFragment"
+        android:name="com.example.courseproject.accounting.views.AccountigFragment"
         android:label="Учёт"
         tools:layout="@layout/fragment_accountig">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/deptsFragment"
-        android:name="com.example.courseproject.debts.DebtsFragment"
+        android:name="com.example.courseproject.debts.views.DebtsFragment"
         android:label="Долги"
         tools:layout="@layout/fragment_debts">
         <action
@@ -44,7 +44,7 @@
         tools:layout="@layout/activity_log_in_flow" />
     <fragment
         android:id="@+id/addDeptDetailsFragment"
-        android:name="com.example.courseproject.debts.AddDebtDetailsFragment"
+        android:name="com.example.courseproject.debts.views.AddDebtDetailsFragment"
         android:label="Добавить долг"
         tools:layout="@layout/fragment_add_debt_details">
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/accountingItemsListFragment"
-        android:name="com.example.courseproject.accounting.AccountingItemsListFragment"
+        android:name="com.example.courseproject.accounting.views.AccountingItemsListFragment"
         android:label="Записи"
         tools:layout="@layout/fragment_accounting_items_list">
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/addAccountingItemFragment"
-        android:name="com.example.courseproject.accounting.AddAccountingItemFragment"
+        android:name="com.example.courseproject.accounting.views.AddAccountingItemFragment"
         android:label="Добавить запись"
         tools:layout="@layout/fragment_add_accounting_item">
         <action

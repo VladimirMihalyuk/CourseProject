@@ -1,8 +1,7 @@
-package com.example.courseproject.debts
+package com.example.courseproject.debts.views
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,8 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.example.courseproject.R
 import com.example.courseproject.databinding.FragmentAddDebtDetailsBinding
-import com.example.courseproject.log_up.LogUpViewModel
+import com.example.courseproject.debts.view_model.DebtViewModel
+import com.example.courseproject.debts.view_model.DebtViewModelFactory
 import com.example.courseproject.repository.Repository
 import com.google.android.material.snackbar.Snackbar
 
@@ -31,7 +31,8 @@ class AddDebtDetailsFragment : Fragment() {
             R.layout.fragment_add_debt_details, container, false)
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
-        val viewModelFactory = DebtViewModelFactory(repository)
+        val viewModelFactory =
+            DebtViewModelFactory(repository)
         val viewModel = activity?.run {
             ViewModelProviders.of(this, viewModelFactory)[DebtViewModel::class.java]
         }?: throw Exception("Invalid Activity")

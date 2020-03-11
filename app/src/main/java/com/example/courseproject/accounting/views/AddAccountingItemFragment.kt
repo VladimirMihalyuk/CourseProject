@@ -1,4 +1,4 @@
-package com.example.courseproject.accounting
+package com.example.courseproject.accounting.views
 
 
 import android.app.DatePickerDialog
@@ -8,11 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
 import com.example.courseproject.R
+import com.example.courseproject.accounting.view_model.AccountingViewModel
+import com.example.courseproject.accounting.view_model.AccountingViewModelFactory
 import com.example.courseproject.databinding.FragmentAddAccountingItemBinding
 import com.example.courseproject.repository.Repository
 import com.google.android.material.snackbar.Snackbar
@@ -32,7 +33,8 @@ class AddAccountingItemFragment : Fragment() {
 
 
         val repository = Repository.getInstance(requireNotNull(this.activity).application)
-        val viewModelFactory = AccountingViewModelFactory(repository)
+        val viewModelFactory =
+            AccountingViewModelFactory(repository)
         val viewModel = activity?.run {
             ViewModelProviders.of(this, viewModelFactory)[AccountingViewModel::class.java]
         }?: throw Exception("Invalid Activity")

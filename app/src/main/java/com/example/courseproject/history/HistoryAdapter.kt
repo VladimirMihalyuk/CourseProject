@@ -33,7 +33,8 @@ class HistoryAdapter():
         companion object{
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = HistoryItemBinding.inflate(layoutInflater, parent, false)
+                val binding
+                        = HistoryItemBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }

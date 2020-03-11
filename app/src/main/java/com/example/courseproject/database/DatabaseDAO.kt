@@ -39,14 +39,18 @@ interface DatabaseDAO {
     fun insertCost(cost: Costs)
 
     @Query("SELECT Description, AmountOfMoney," +
-            " DateOfCost, Icon FROM Costs INNER JOIN CostType ON IdOfCostType == IdOfCoost WHERE UserId = :userId")
+            " DateOfCost, Icon FROM Costs " +
+            "INNER JOIN CostType ON IdOfCostType == IdOfCoost WHERE UserId = :userId")
     fun getAllCostsForHistory(userId: String):LiveData<List<HistoryCostRequest>>
 
     @Query("SELECT Description, AmountOfMoney, DateOfIncome, Icon FROM Income INNER JOIN " +
             "IncomeType ON Income.IdOfIncomeType == IncomeType.IdOfIncomeType WHERE UserId = :userId")
     fun getAllIncomeForHistory(userId: String):LiveData<List<HistoryIncomeRequest>>
 
-    @Query("SELECT Type, SUM(AmountOfMoney) * 100.0 /(SELECT SUM(AmountOfMoney) FROM COSTS WHERE DateOfCost > :date AND UserId = :userId)  AS Value  FROM Costs INNER JOIN CostType ON IdOfCoost == IdOfCostType WHERE DateOfCost > :date AND UserId = :userId GROUP BY IdOfCostType; ")
+    @Query("SELECT Type, SUM(AmountOfMoney) * 100.0 /(SELECT SUM(AmountOfMoney) " +
+            "FROM COSTS WHERE DateOfCost > :date AND UserId = :userId)  AS Value  " +
+            "FROM Costs INNER JOIN CostType ON IdOfCoost == IdOfCostType " +
+            "WHERE DateOfCost > :date AND UserId = :userId GROUP BY IdOfCostType; ")
     fun getCostForPieCharts(userId: String, date: Long):LiveData<List<PieChartResults>>
 
 }

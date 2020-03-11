@@ -1,8 +1,7 @@
-package com.example.courseproject.debts
+package com.example.courseproject.debts.views
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import android.view.ViewGroup
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.courseproject.R
+import com.example.courseproject.debts.view_model.DebtViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_debts.view.*
 
@@ -52,7 +52,8 @@ class DebtsFragment : Fragment() {
     private inner class ScreenSlidePagerAdapter(fa: Fragment) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = list.size
 
-        override fun createFragment(position: Int): Fragment = DebtPageFragment.newInstance(list[position])
+        override fun createFragment(position: Int): Fragment =
+            DebtPageFragment.newInstance(list[position])
 
     }
 

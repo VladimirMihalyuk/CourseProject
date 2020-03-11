@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.courseproject.accounting.AccountingViewModel" />
+            type="com.example.courseproject.accounting.view_model.AccountingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".accounting.AccountigFragment">
+        tools:context=".accounting.views.AccountigFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/income"

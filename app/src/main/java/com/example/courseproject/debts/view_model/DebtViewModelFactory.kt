@@ -1,8 +1,7 @@
-package com.example.courseproject.debts
+package com.example.courseproject.debts.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.courseproject.log_in.LogInViewModel
 import com.example.courseproject.repository.Repository
 
 
